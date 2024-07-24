@@ -6,7 +6,7 @@ export const extractMBS = (ocg) => {
 export const extractOdds = (ocg, marketId, ocId) => {
     const market = ocg?.[marketId];
     if (market?.OC) {
-        return market.OC?.[ocId]?.O || null;
+        return market.OC?.[ocId] || null;
     }
     return null;
 };
