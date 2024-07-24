@@ -1,13 +1,8 @@
 import React from  'react'
-import { BetProvider } from './components/BetContext';
-import FetchData from './components/FetchData';
+import Table from './components/Table';
 
 function App(){
-  return(
-    <BetProvider>
-      <FetchData />
-    </BetProvider>  
-    );
+  return <Table />;
 }
 
 export default App;
