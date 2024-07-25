@@ -1,12 +1,12 @@
-.container {
-  width: 100vw; 
-  margin: 0; 
-  overflow-x: auto; 
+#root {
+  position: fixed;
+  top: 0;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  position: relative;
 }
 
 .table th, .table td {
@@ -19,6 +19,8 @@
 .table th {
   background-color: #f4f4f4; 
   font-weight: bold;
+  position: sticky;
+  top: 0;
 }
 
 .event-details {
