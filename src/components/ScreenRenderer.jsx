@@ -1,24 +1,27 @@
-import { useMemo } from 'react';
+import React from 'react';
+import { FixedSizeList as List } from 'react-window';
 import MatchLine from "./Match.Line";
-import { screenRowCount } from '../utils/helpers';
-import useScrollDirection from '../hooks/scrollDirection';
 
-const ScreenRenderer = ({data}) => {
-  const scrollDirection = useScrollDirection();
+const ScreenRenderer = ({ data }) => {
+  const Row = ({ index, style }) => (
+    <div style={style} className="table-row" key={index}>
+      <MatchLine rowIndex={index} event={data[index]} />
+    </div>
+  );
 
-  const MatchRows = useMemo(() => {
-    const rowCountToRender = screenRowCount();
-    const startingIndex = scrollDirection;
-    console.log({startingIndex})
-
-    let matchRows = [];
-    for (var i = 0; i<rowCountToRender; i++) {
-      matchRows.push(<MatchLine key = {i} rowIndex = {i} event= {data[i+startingIndex]}/>)
-    }
-    return matchRows;
-  }, [data, scrollDirection]);
-
-  return MatchRows;
+  return (
+    <div className="table-container">
+      <List
+        height={window.innerHeight}
+        itemCount={data.length}
+        itemSize={100}
+        width={window.innerWidth}
+        itemData={data}
+      >
+        {Row}
+      </List>
+    </div>
+  );
 };
 
-export default ScreenRenderer
+export default ScreenRenderer;

@@ -1,35 +1,31 @@
-#root {
-  position: fixed;
-  top: 0;
-}
-
-.table {
+.container {
+  display: block; /* Flexbox yerine block kullanıyoruz */
   width: 100%;
-  border-collapse: collapse;
-  position: relative;
-}
-
-.table th, .table td {
   border: 1px solid #ddd;
-  padding: 8px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Otomatik sütun genişliği */
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 4px; /* Padding'i küçülttük */
   text-align: left;
+}
+
+.event-cell {
+  border: 1px solid #ddd;
+  padding: 4px; /* Padding'i küçülttük */
+  text-align: center;
   white-space: nowrap;
+  font-size: 12px; /* Yazı boyutunu küçülttük */
 }
 
-.table th {
-  background-color: #f4f4f4; 
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-}
-
-.event-details {
+.event-detail {
+  grid-column: span 7; /* İlk hücre 7 sütun genişliğinde */
   display: flex;
   align-items: center;
-}
-
-.event-details div {
-  margin-right: 10px;
+  font-size: 12px; /* Yazı boyutunu küçülttük */
 }
 
 .selected {
@@ -60,13 +56,11 @@
   text-align: left;
 }
 
-.event-cell {
-  height: 10px; 
-  overflow: hidden;
-}
-
 .header-cell {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: left;
+  white-space: nowrap;
+  background-color: #f4f4f4; 
   font-weight: bold;
-  color: #000; 
 }
-

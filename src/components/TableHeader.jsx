@@ -2,16 +2,16 @@ import { headKeys } from '../utils/constants';
 
 const TableHeader = ({ count }) => {
   return (
-    <thead>
-      <tr>
-          <th colSpan="7">Event Count: {count}</th>
-          <th>Yorumlar</th>
-          <th>MBS</th>
-          {headKeys.map((key, index) => (
-              <th key={index}>{key}</th>
-          ))}
-      </tr>
-    </thead>
+    <div className="table-header">
+      <div className="header-row">
+        <span className="header-cell" colSpan="7">Event Count: {count}</span>
+        <span className="header-cell">Yorumlar</span>
+        <span className="header-cell">MBS</span>
+        {headKeys.map((key, index) => (
+          <span className="header-cell" key={index}>{key}</span>
+        ))}
+      </div>
+    </div>
   );
 };
 

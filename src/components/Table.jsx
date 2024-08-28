@@ -3,57 +3,48 @@ import axios from "axios";
 import './styles.css';
 import TableHeader from "./TableHeader";
 import { BetProvider } from '../context/BetContext';
-import { calculateScreenHeight } from "../utils/helpers";
 
-
-const Coupon = lazy(() => import("./Coupon"))
-const ScreenRenderer = lazy(() => import("./ScreenRenderer"))
+const Coupon = lazy(() => import("./Coupon"));
+const ScreenRenderer = lazy(() => import("./ScreenRenderer"));
 
 function Table() {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [screenHeight, setScreenHeight] = useState("auto");
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {       
-        try{
-            axios.get('https://nesine-case-study.onrender.com/bets').then((res)=>{
-                setData(res.data);
-                setIsLoading(false);
-                setScreenHeight(calculateScreenHeight(res.data.length));
-            })
-        } catch {
-            setIsLoading(false);
+  useEffect(() => {       
+    axios.get('https://nesine-case-study.onrender.com/bets')
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
+  }, []);
+
+  return (
+    <BetProvider>
+      <div id="root">
+        <div className="table">
+          <TableHeader count={data.length} />
+          <div className="table-body">
+            {isLoading ? (
+              <div className="table-row"><span className="header-cell" colSpan="19">Loading...</span></div>
+            ) : (
+              <Suspense fallback={<div className="table-row"><span className="header-cell" colSpan="19">Loading...</span></div>}>
+                <ScreenRenderer data={data} />
+              </Suspense>
+            )}
+          </div>
+        </div>
+        {
+          !isLoading && (
+            <Suspense fallback={<div>Coupon Loading...</div>}>
+              <Coupon data={data} />
+            </Suspense>
+          )
         }
-    }, []);
-
-    return (
-        <BetProvider>
-            <>
-                <style>
-                    {`body {
-                        height: ${screenHeight}px;
-                    }`}
-                </style>
-                <table className="table">
-                    <TableHeader count={data.length} />
-                    <tbody>
-                        {isLoading ? (
-                            <tr><td colSpan="19">Loading...</td></tr>
-                        ) : (
-                            <ScreenRenderer data={data} />
-                        )}
-                    </tbody>
-                </table>
-                {
-                    !isLoading && (
-                        <Suspense fallback={<div>Coupon Loading...</div>}>
-                            <Coupon data={data} />
-                        </Suspense>
-                    )
-                }
-            </>
-        </BetProvider>
-    );
+      </div>
+    </BetProvider>
+  );
 }
 
 export default Table;
