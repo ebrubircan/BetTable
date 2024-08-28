@@ -1,31 +1,31 @@
 .container {
-  display: block; /* Flexbox yerine block kullanıyoruz */
+  display: block; 
   width: 100%;
   border: 1px solid #ddd;
 }
 
 .table-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); /* Otomatik sütun genişliği */
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); 
   align-items: center;
   border: 1px solid #ddd;
-  padding: 4px; /* Padding'i küçülttük */
+  padding: 4px; 
   text-align: left;
 }
 
 .event-cell {
   border: 1px solid #ddd;
-  padding: 4px; /* Padding'i küçülttük */
+  padding: 4px; 
   text-align: center;
   white-space: nowrap;
-  font-size: 12px; /* Yazı boyutunu küçülttük */
+  font-size: 12px;
 }
 
 .event-detail {
-  grid-column: span 7; /* İlk hücre 7 sütun genişliğinde */
+  grid-column: span 7; 
   display: flex;
   align-items: center;
-  font-size: 12px; /* Yazı boyutunu küçülttük */
+  font-size: 12px; 
 }
 
 .selected {
