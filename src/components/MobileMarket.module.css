@@ -1,0 +1,25 @@
+.marketTitle{
+    margin: 0;
+    font-size: 100%;
+    font-weight: 400;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.oddContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.oddContainer .oddWrapper{
+    border: 1px solid green;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.oddContainer .oddWrapper > button{
+    width: 100%;
+    padding: 5px;
+}

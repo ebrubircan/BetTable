@@ -1,48 +1,34 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
-import axios from "axios";
+import React, {lazy, Suspense } from "react";
 import './styles.css';
 import TableHeader from "./TableHeader";
 import { BetProvider } from '../context/BetContext';
+import style from "./Table.module.css";
+import { useGetBets } from "../hooks/useGetBets";
 
 const Coupon = lazy(() => import("./Coupon"));
 const ScreenRenderer = lazy(() => import("./ScreenRenderer"));
 
 function Table() {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {       
-    axios.get('https://nesine-case-study.onrender.com/bets')
-      .then((res) => {
-        setData(res.data);
-        setIsLoading(false);
-      })
-      .catch(() => setIsLoading(false));
-  }, []);
-
+  const{data,loading} = useGetBets()
   return (
     <BetProvider>
-      <div id="root">
-        <div className="table">
-          <TableHeader count={data.length} />
-          <div className="table-body">
-            {isLoading ? (
-              <div className="table-row"><span className="header-cell" colSpan="19">Loading...</span></div>
-            ) : (
-              <Suspense fallback={<div className="table-row"><span className="header-cell" colSpan="19">Loading...</span></div>}>
-                <ScreenRenderer data={data} />
-              </Suspense>
-            )}
-          </div>
-        </div>
-        {
-          !isLoading && (
-            <Suspense fallback={<div>Coupon Loading...</div>}>
-              <Coupon data={data} />
-            </Suspense>
-          )
-        }
+      <TableHeader count={data.length} />
+      <div className={style.wrapper}>
+        {loading ? (
+          <div><span className="header-cell">Loading...</span></div>
+        ) : (
+          <Suspense fallback={<div><span className="header-cell">Loading...</span></div>}>
+            <ScreenRenderer data={data} />
+          </Suspense>
+        )}
       </div>
+      {
+        !loading && (
+          <Suspense fallback={<div>Coupon Loading...</div>}>
+            <Coupon data={data} />
+          </Suspense>
+        )
+      }
     </BetProvider>
   );
 }

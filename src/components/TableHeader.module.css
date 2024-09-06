@@ -1,0 +1,16 @@
+.headerCell {
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+    white-space: nowrap;
+    height: 40px;
+
+  }
+
+  .headerRow{
+    background-color: #cfcfcf; 
+    font-size: 14px;
+    text-align: center;
+    height: 50px;
+
+  }

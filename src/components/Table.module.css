@@ -1,0 +1,19 @@
+.wrapper, .wrapperFirstCol {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 0px;
+  grid-auto-rows: 25px; 
+}
+
+.wrapperFirstCol {
+  background-color: #7D9FA4;
+}
+
+.firstCol{
+  grid-column: span 3/ span 21;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  padding: 4px; 
+  text-align: left;
+  white-space: nowrap;
+}

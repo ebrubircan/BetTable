@@ -1,17 +1,20 @@
 import { headKeys } from '../utils/constants';
+import style from "./TableHeader.module.css";
+import tableStyle from "./Table.module.css";
 
 const TableHeader = ({ count }) => {
   return (
-    <div className="table-header">
-      <div className="header-row">
-        <span className="header-cell" colSpan="7">Event Count: {count}</span>
-        <span className="header-cell">Yorumlar</span>
-        <span className="header-cell">MBS</span>
-        {headKeys.map((key, index) => (
-          <span className="header-cell" key={index}>{key}</span>
-        ))}
-      </div>
-    </div>
+<div className={`${style.headerRow} ${tableStyle.wrapper}`}>
+  <span className={`${style.headerCell} ${tableStyle.firstCol}`} style={{ fontSize: '14px', textAlign: 'center', lineHeight: '40px' }}>
+    Event Count: {count}
+  </span>
+  <span className={style.headerCell} style={{ lineHeight: '40px' }}>Yorumlar</span>
+  <span className={style.headerCell} style={{ lineHeight: '40px' }}>MBS</span>
+  {headKeys.map((key, index) => (
+    <span className={style.headerCell} key={index} style={{ lineHeight: '40px' }}>{key}</span>
+  ))}
+</div>
+
   );
 };
 

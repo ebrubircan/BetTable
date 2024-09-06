@@ -4,17 +4,17 @@ import MatchLine from "./Match.Line";
 
 const ScreenRenderer = ({ data }) => {
   const Row = ({ index, style }) => (
-    <div style={style} className="table-row" key={index}>
+    <div style={style} key={index}>
       <MatchLine rowIndex={index} event={data[index]} />
     </div>
   );
 
   return (
-    <div className="table-container">
+    <div>
       <List
         height={window.innerHeight}
         itemCount={data.length}
-        itemSize={100}
+        itemSize={50}
         width={window.innerWidth}
         itemData={data}
       >
