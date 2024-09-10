@@ -7,6 +7,7 @@
 
 .wrapperFirstCol {
   background-color: #7D9FA4;
+  color: #ffffff;
 }
 
 .firstCol{
@@ -16,4 +17,17 @@
   padding: 4px; 
   text-align: left;
   white-space: nowrap;
+}
+
+.eventCell {
+  border: 1px solid #ddd;
+  padding: 4px; 
+  text-align: center;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.selected {
+  background-color: #fc0;
+  font-weight: bold;
 }

@@ -23,19 +23,19 @@ const MatchLine = ({ rowIndex, event }) => {
         <div className={tableStyle.firstCol}>
           {event.D} {event.DAY} {event.LN}
         </div>
-        <div className="event-cell">Yorumlar</div>
+        <div className={tableStyle.eventCell}>Yorumlar</div>
         {[" ", "1", "X", "2", "Alt", "Üst", "H1", "1", "2", "H2", "1-X", "1-2", "X-2", "Var", "Yok", "+99"].map((key, index) => (
-          <div key={index} className="event-cell">{key}</div>
+          <div key={index} className={tableStyle.eventCell}>{key}</div>
         ))}
       </div>
       <div className={tableStyle.wrapper}>
         <EventCount event={event}/>
-        <div className="event-cell">Yorumlar</div>
-        <div className="event-cell">{extractMBS(event.OCG)}</div>
+        <div className={tableStyle.eventCell}>Yorumlar</div>
+        <div className={tableStyle.eventCell}>{extractMBS(event.OCG)}</div>
         {oddsKeys.map((key, index) => (
           <div
             key={index}
-            className={`event-cell  ${key === selectedBet ? 'selected' : ''}`}
+            className={`${tableStyle.eventCell} ${key === selectedBet ? 'selected' : ''}`}
             onClick={() => handleSelect(key)}
           >
             {extractOdds(event.OCG, ...key.split('-'))?.O}

@@ -1,16 +1,8 @@
-.selectBoxContainer {
-    position: relative;
-    display: inline-block;
-    background-color: #fff;
-    border-radius: 4px;
-    padding: 5px;
-  }
-  
-  .selectBox {
-    background-color: #fff;
-    border-radius: 4px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-  }
-  
+.selectBox {
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+}

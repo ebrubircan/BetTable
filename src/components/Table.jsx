@@ -1,5 +1,4 @@
 import React, {lazy, Suspense } from "react";
-import './styles.css';
 import TableHeader from "./TableHeader";
 import { BetProvider } from '../context/BetContext';
 import style from "./Table.module.css";
@@ -15,9 +14,9 @@ function Table() {
       <TableHeader count={data.length} />
       <div className={style.wrapper}>
         {loading ? (
-          <div><span className="header-cell">Loading...</span></div>
+          <div><span>Loading...</span></div>
         ) : (
-          <Suspense fallback={<div><span className="header-cell">Loading...</span></div>}>
+          <Suspense fallback={<div><span>Loading...</span></div>}>
             <ScreenRenderer data={data} />
           </Suspense>
         )}

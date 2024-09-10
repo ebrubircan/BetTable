@@ -1,0 +1,47 @@
+.mbsStyle {
+  background: #008530;
+  width: 15px;
+  height: 18px;
+  font-size: 11px;
+  color: #fff;
+  border-radius: 3px;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.8em;
+  display: block;
+  margin: inherit;
+  text-align: center;
+}
+
+.smallTableContainer {
+  max-width: 450px;
+  width: calc(100% - 80px);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.smallTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.smallTable td {
+  border: 3px solid #7d9fa4;
+  padding: 8px;
+  text-align: left;
+}
+
+.smallTable tr:nth-child(odd) td {
+  background-color: #eee;
+}
+
+.smallTable tr.maxKazancRow td,
+.smallTable tr.maxOranRow td {
+  background-color: #fff !important;
+}

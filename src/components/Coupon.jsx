@@ -2,30 +2,35 @@ import { useContext, useMemo, useState } from "react";
 import { BetContext } from "../context/BetContext";
 import CouponRow from "./CouponRow";
 import SelectBox from "./SelectBox";
+import style from "./Coupon.module.css"
 
 const Coupon = ({ data }) => {
   const selectedBets = useContext(BetContext);
   const betsArr = Object.values(selectedBets);
 
-  const [selectedAmount, setSelectedAmount] = useState(10);
+  const [selectedAmount, setSelectedAmount] = useState(30);
 
   const totalAmount = useMemo(() => {
     if (betsArr.length === 0) return 0;
-
+  
     return betsArr
       .reduce((total, odd) => {
-        return total + (parseFloat(odd.O) || 0);
-      }, 0)
+        return total * (parseFloat(odd.O) || 1);
+      }, 1) 
       .toFixed(2);
   }, [betsArr]);
+
+  const maxKazanc = useMemo(() => {
+    return (totalAmount * selectedAmount).toFixed(2);
+  }, [totalAmount, selectedAmount]);
 
   const handleSelectChange = (event) => {
     setSelectedAmount(event.target.value);
   };
 
   return (
-    <div className="small-table-container">
-      <table className="small-table">
+    <div className={style.smallTableContainer}>
+      <table className={style.smallTable}>
         <tbody>
           {Object.entries(selectedBets).map(([rowIndex, odd]) => {
             const event = data[rowIndex];
@@ -47,8 +52,7 @@ const Coupon = ({ data }) => {
             <td>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <div style={{ flex: 1 }}>
-                  Max Oran: {totalAmount} <br />
-                  Max Kazanç: {totalAmount}
+                  Max Oran: {totalAmount}
                 </div>
                 <div>
                   <SelectBox
@@ -57,6 +61,11 @@ const Coupon = ({ data }) => {
                   />
                 </div>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Max Kazanç: {maxKazanc} TL</strong>
             </td>
           </tr>
         </tbody>
