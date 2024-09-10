@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import style from "./MobileMarket.module.css";
 import { BetContext, BetSetterContext } from "../context/BetContext";
+import tableStyle from "./Table.module.css";
 
 export const MobileMarket = ({ market, rowIndex }) => {
   const handleSelectedBets = useContext(BetSetterContext);
@@ -24,7 +25,7 @@ export const MobileMarket = ({ market, rowIndex }) => {
               <button
             
                 type={"button"}
-                className={selectedBet === OcKey ? "selected" : ""}
+                className={selectedBet === OcKey ? tableStyle.selected : ""}
                 onClick={() => handleSelect(OcKey, market.OC[outcome])}
               >
                 {market.OC[outcome].O}

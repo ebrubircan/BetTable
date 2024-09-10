@@ -35,7 +35,7 @@ const MatchLine = ({ rowIndex, event }) => {
         {oddsKeys.map((key, index) => (
           <div
             key={index}
-            className={`${tableStyle.eventCell} ${key === selectedBet ? 'selected' : ''}`}
+            className={`${tableStyle.eventCell} ${key === selectedBet ? tableStyle.selected : ''}`}
             onClick={() => handleSelect(key)}
           >
             {extractOdds(event.OCG, ...key.split('-'))?.O}
