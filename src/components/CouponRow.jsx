@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Coupon.module.css'
 
-const CouponRow = ({ mbs, code, match, odds, OcKey }) => {
+const CouponRow = ({ mbs, code, match, odds }) => {
   return (
     <tr>
       <td>
